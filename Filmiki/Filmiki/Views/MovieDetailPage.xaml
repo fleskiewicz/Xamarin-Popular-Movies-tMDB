@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="Filmiki.Views.MovieDetailPage"
+             Title="{Binding PageTitle}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="ListAdd" 
+                     Order="Primary" 
+                     Icon="round_favorite_24.xml"
+                     Command="{Binding FavoriteCommand}" 
+                     />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView BackgroundColor="Cyan">
+            <Grid BackgroundColor="Cyan" Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <ffimageloading:CachedImage
+                Source="{Binding BackdropPath, StringFormat='https://image.tmdb.org/t/p/w1280/{0}'}"
+                LoadingPlaceholder="noimgwidget.png"
+                    Grid.Row="0"
+                />
+
+                <Label Text="{Binding Title}" 
+                   FontSize="Large"
+                   FontAttributes="Bold"
+                   VerticalOptions="CenterAndExpand"
+                   TextColor="Black"
+                   Grid.Row="1"
+                   />
+                <Label Text="Fabuła"
+                   FontSize="Medium"
+                   FontAttributes="Bold"
+                   TextColor="Black"
+                   Grid.Row="2"
+                   />
+                <Label Text="{Binding Overview}"
+                   FontSize="Default"
+                   TextColor="Black"
+                   Grid.Row="3"
+                   />
+                <Label Text="{Binding Path=VoteAverage, StringFormat='Ocena: {0}'}"
+                   FontAttributes="Bold"
+                   VerticalOptions="CenterAndExpand"
+                   TextColor="Black"
+                   Grid.Row="4"/>
+                <Button Text="Usuń z listy"
+                        Grid.Row="5"
+                        HorizontalOptions="Center"
+                        HeightRequest="60"
+                        WidthRequest="200"
+                        IsEnabled="{Binding IsAddedToList}"
+                        Command="{Binding DeleteFilm}"
+                        />
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

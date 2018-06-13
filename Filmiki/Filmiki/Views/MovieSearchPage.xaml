@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Filmiki.Views.MovieSearchPage"
+             Title="Wyszukiwarka filmów">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="Cyan">
+            <SearchBar x:Name="SearchBar" Placeholder="Wprowadź zapytanie..." SearchCommand="{Binding SearchCommand}" SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
